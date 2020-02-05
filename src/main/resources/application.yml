@@ -1,0 +1,42 @@
+debug: true
+
+logging:
+    level:
+        org:
+            springframework:
+                web: DEBUG
+
+security:
+    http:
+        log-request-details: true
+
+server:
+    port: 8089
+
+spring:
+    datasource:
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        database: postgresql
+        hibernate:
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+            ddl-auto: validate
+        generate-ddl: false
+        properties:
+            hibernate:
+                cache:
+                    auto_evict_collection_cache: true
+                    region:
+                        factory_class: com.hazelcast.hibernate.HazelcastLocalCacheRegionFactory
+                    use_second_level_cache: true
+                    use_query_cache: true
+                    use_minimal_puts: true
+                jdbc:
+                    lob:
+                        non_contextual_creation: true
+    main:
+        banner-mode: "off"
+    profiles:
+        active: dev

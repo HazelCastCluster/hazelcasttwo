@@ -1,0 +1,21 @@
+debug: true
+
+spring:
+    datasource:
+        hikari:
+            connection-timeout: 30000
+            idle-timeout: 20000
+            leak-detection-threshold: 30000
+            max-lifetime: 180000
+            maximum-pool-size: 100
+            minimum-idle: 5
+    jpa:
+        properties:
+            hibernate:
+                show_sql: true
+                cache:
+                    use_query_cache: true
+                    use_second_level_cache: true
+                    provider_configuration_file_resource_path: hazelcast-hibernate-dev.xml
+                    region:
+                        factory_class: com.hazelcast.hibernate.HazelcastLocalCacheRegionFactory

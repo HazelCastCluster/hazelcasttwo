@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazelcast xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-config-3.10.xsd">
+
+  <properties>
+    <property name="hazelcast.logging.type">log4j2</property>
+    <property name="hazelcast.jmx">true</property>
+  </properties>
+
+  <map name="default">
+    <max-size>8192</max-size>
+    <!-- 2 hours -->
+    <time-to-live-seconds>7200</time-to-live-seconds>
+  </map>
+
+  <map name="org.hibernate.cache.spi.UpdateTimestampsCache">
+    <max-size>16384</max-size>
+    <!-- 8 hours -->
+    <time-to-live-seconds>28800</time-to-live-seconds>
+  </map>
+
+  <map name="org.hibernate.cache.internal.StandardQueryCache">
+    <max-size>16384</max-size>
+    <!-- 8 hours -->
+    <time-to-live-seconds>28800</time-to-live-seconds>
+  </map>
+
+</hazelcast>
